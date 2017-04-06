@@ -14,49 +14,32 @@
     shell:SystemTray.IsVisible="True">
 
     <!--LayoutRoot is the root grid where all page content is placed-->
-    <Grid x:Name="LayoutRoot" Background="Transparent">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+    <Grid x:Name="LayoutRoot" Background="#FF41B217">
+        <phone:Pivot Title="ADAMS CRONÔMETRO" x:Name="Pivot">
+            <phone:PivotItem Header="cronômetro" TabIndex="0">
+                <StackPanel Height="603" VerticalAlignment="Bottom">
+                    <TextBlock x:Name="lblTempo" Text="--:--" Height="100" FontSize="60" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Top"/>
 
-        <!-- LOCALIZATION NOTE:
-            To localize the displayed strings copy their values to appropriately named
-            keys in the app's neutral language resource file (AppResources.resx) then
-            replace the hard-coded text value between the attributes' quotation marks
-            with the binding clause whose path points to that string name.
+                    <Grid x:Name="Cronometro" Height="330" Width="309" Tap="Cronometro_Tap" DoubleTap="Cronometro_DoubleTap">
+                        <Canvas>
+                            <Path Fill="{StaticResource PhoneContrastBackgroundBrush}" 
+                                  Data="m 310.59214 618.44969 c -22.49502 -2.72545 -45.54546 -10.81778 -63.87639 -22.42513 -15.13081 -9.58101 -31.92156 -25.02412 -42.07028 -38.6937 -15.50637 -20.88597 -25.47482 -44.69605 -29.41728 -70.26452 -1.32537 -8.59549 -1.50165 -35.11564 -0.28742 -43.2397 2.65898 -17.7905 7.07901 -31.99276 14.8736 -47.79125 18.59474 -37.6888 51.03419 -65.72585 91.46469 -79.05186 l 4.69379 -1.54708 0.002 -7.20731 c 0.002 -6.13275 0.16692 -7.47758 1.10744 -9.02006 1.69951 -2.78724 3.10514 -3.28058 10.23498 -3.59221 l 6.50854 -0.28447 0.44597 -1.7282 c 0.24529 -0.95051 1.23763 -2.48666 2.20522 -3.41366 l 1.75909 -1.68546 20.48832 0 20.48832 0 1.94759 2.12518 c 1.13775 1.24151 1.94758 2.7201 1.94758 3.5559 l 0 1.43071 6.28663 0 c 10.53922 0 11.91414 1.45232 11.91743 12.58831 l 0.002 7.18336 8.10744 2.78874 8.10745 2.78875 2.72297 -2.9625 c 8.40449 -9.14394 21.02041 -11.53925 31.98226 -6.0723 8.87034 4.42385 14.50823 13.67103 14.50823 23.79616 0 4.03105 -1.35792 9.71344 -3.03183 12.6871 -0.69492 1.23449 -0.40371 1.64623 5.16644 7.30481 22.76305 23.12449 37.28234 51.72518 42.85076 84.40921 1.54662 9.07798 2.13268 29.69982 1.12599 39.62147 -4.1085 40.49273 -23.76843 77.48171 -55.21446 103.8827 -22.64283 19.01014 -51.49106 31.32153 -81.66329 34.85097 -9.01675 1.05475 -26.53727 1.03793 -35.38433 -0.034 z m 33.09468 -23.86004 c 56.55252 -6.6153 102.36754 -48.87792 113.4774 -104.67859 1.66152 -8.34517 2.33638 -15.65825 2.33638 -25.31798 0 -20.8323 -4.29529 -39.38727 -13.36802 -57.74776 -19.55031 -39.56399 -56.41737 -66.08722 -100.42067 -72.24553 -13.29324 -1.8604 -31.84933 -1.03185 -45.79995 2.04503 -13.76565 3.03608 -31.59072 10.63165 -43.2397 18.42518 -29.17798 19.52098 -49.63723 49.65644 -56.28659 82.90735 -2.25554 11.2791 -2.77799 17.77922 -2.43484 30.29322 0.55386 20.19782 4.28202 35.61404 12.93842 53.50132 24.11537 49.83116 77.7741 79.2542 132.79757 72.81776 z M 425.33408 340.1367 c 2.03288 -7.32006 -1.23798 -15.00256 -7.86032 -18.46211 -2.52116 -1.31707 -3.75317 -1.59098 -7.1095 -1.58065 -2.69455 0.008 -4.82521 0.36138 -6.33565 1.04991 -2.33102 1.06261 -5.97391 3.84273 -5.97391 4.55908 0 0.21992 1.39963 1.08629 3.1103 1.92528 4.17617 2.04818 12.0692 6.96244 17.95863 11.18119 2.6499 1.89819 4.99799 3.45341 5.21797 3.45605 0.21998 0.003 0.66659 -0.95531 0.99248 -2.12875 z" Canvas.Left="-174" Canvas.Top="-289" UseLayoutRounding="False"/>
+                        </Canvas>
+                        <Canvas Width="20" Height="135" Margin="145,57,144,138">
+                            <Canvas.RenderTransform>
+                                <RotateTransform x:Name="PointerAngle" Angle="0" CenterX="10" CenterY="120"/>
+                            </Canvas.RenderTransform>
+                            <Canvas>
+                                <Path Name="ponteiro" Fill="{StaticResource PhoneAccentBrush}" Data="m 0 0 c -1.0862 -0.55338 -2.57558 -1.84823 -3.30974 -2.87746 l -1.33484 -1.87131 -0.15879 -61.12871 -0.15879 -61.1287 1.37665 -2.04282 c 2.25229 -3.34216 4.91969 -4.77942 8.87014 -4.77942 3.94625 0 6.61773 1.43707 8.86178 4.76703 l 1.36831 2.03042 0 60.44838 c 0 66.84622 0.22213 63.01616 -3.82179 65.89568 -2.4898 1.7729 -8.83019 2.14537 -11.69293 0.68691 z" Canvas.Left="5" Canvas.Top="134"  UseLayoutRounding="False"/>
+                            </Canvas>
+                        </Canvas>
+                    </Grid>
+                </StackPanel>
+            </phone:PivotItem>
 
-            For example:
-
-                Text="{Binding Path=LocalizedResources.ApplicationTitle, Source={StaticResource LocalizedStrings}}"
-
-            This binding points to the template's string resource named "ApplicationTitle".
-
-            Adding supported languages in the Project Properties tab will create a
-            new resx file per language that can carry the translated values of your
-            UI strings. The binding in these examples will cause the value of the
-            attributes to be drawn from the .resx file that matches the
-            CurrentUICulture of the app at run time.
-         -->
-
-        <!--TitlePanel contains the name of the application and page title-->
-        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
-            <TextBlock Text="page name" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
-        </StackPanel>
-
-        <!--ContentPanel - place additional content here-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-
-        </Grid>
-
-        <!--Uncomment to see an alignment grid to help ensure your controls are
-            aligned on common boundaries.  The image has a top margin of -32px to
-            account for the System Tray. Set this to 0 (or remove the margin altogether)
-            if the System Tray is hidden.
-
-            Before shipping remove this XAML and the image itself.-->
-        <!--<Image Source="/Assets/AlignmentGrid.png" VerticalAlignment="Top" Height="800" Width="480" Margin="0,-32,0,0" Grid.Row="0" Grid.RowSpan="2" IsHitTestVisible="False" />-->
+            <phone:PivotItem Header="histórico" TabIndex="1">
+            </phone:PivotItem>
+        </phone:Pivot>
     </Grid>
 
 </phone:PhoneApplicationPage>
