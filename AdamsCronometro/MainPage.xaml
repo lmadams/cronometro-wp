@@ -38,6 +38,18 @@
             </phone:PivotItem>
 
             <phone:PivotItem Header="histórico" TabIndex="1">
+                <phone:LongListSelector x:Name="MainLongListSelector" Margin="0,0,-12,0"
+                                        ItemsSource="{Binding listaCronometro}">
+                    <phone:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="110">
+                                <TextBlock x:Name="tempo" HorizontalAlignment="Left" 
+                                           Margin="10,10,0,0" TextWrapping="Wrap" Text="{Binding Tempo}" 
+                                           VerticalAlignment="Top" Width="346" FontSize="40" />
+                            </Grid>
+                        </DataTemplate>
+                    </phone:LongListSelector.ItemTemplate>
+                </phone:LongListSelector>
             </phone:PivotItem>
         </phone:Pivot>
     </Grid>

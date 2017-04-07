@@ -10,7 +10,7 @@ using System.ComponentModel;
 namespace AdamsCronometro.Dados
 {
     [Table]
-    class Cronometro : INotifyPropertyChanged
+    public class Cronometro : INotifyPropertyChanged
     {
         #region id
         private int id;
@@ -34,10 +34,10 @@ namespace AdamsCronometro.Dados
         #endregion
 
         #region tempo
-        private int tempo;
+        private string tempo;
 
         [Column]
-        public int Tempo
+        public string Tempo
         {
             get
             {

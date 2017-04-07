@@ -7,11 +7,16 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using AdamsCronometro.Resources;
+using AdamsCronometro.Dados;
 
 namespace AdamsCronometro
 {
     public partial class App : Application
     {
+
+        // Lista de cronometros
+        public static MainData bancoDeDados;
+
         /// <summary>
         /// Provides easy access to the root frame of the Phone Application.
         /// </summary>
@@ -55,6 +60,8 @@ namespace AdamsCronometro
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            /* Inicia o banco de dados */
+            bancoDeDados = new MainData();
         }
 
         // Code to execute when the application is launching (eg, from Start)

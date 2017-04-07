@@ -9,6 +9,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using AdamsCronometro.Resources;
 using System.Windows.Threading;
+using AdamsCronometro.Dados;
 
 namespace AdamsCronometro
 {
@@ -16,6 +17,7 @@ namespace AdamsCronometro
     {
         private DispatcherTimer timer = new DispatcherTimer();
         private int tempo = 0;
+        private List<Cronometro> tempos = new List<Cronometro>();
 
         // Constructor
         public MainPage()
@@ -25,6 +27,9 @@ namespace AdamsCronometro
             /* Construcao do Timer */
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Tick += timer_Tick;
+
+            /* Banco de dados */
+            DataContext = App.bancoDeDados;
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -50,11 +55,21 @@ namespace AdamsCronometro
             if (timer.IsEnabled)
             {
                 timer.Stop();
+                salvarTempo();
             }
             else 
             {
                 timer.Start();
             }
+        }
+
+        private void salvarTempo()
+        {
+            int minutos = tempo / 60;
+            int segundos = tempo % 60;
+
+            Cronometro cro = new Cronometro() { Tempo = (minutos.ToString("00") + ":" + segundos.ToString("00")) };
+            tempos.Add(cro);
         }
 
         // Metodo para para o cronometro.
@@ -66,7 +81,13 @@ namespace AdamsCronometro
             atualizaLabel();
             
             PointerAngle.Angle = 0;
-            // Pivot.SelectedIndex = 1;
+
+
+            foreach (Cronometro cro in tempos)
+            {
+                App.bancoDeDados.AdicionarTempo(cro);
+            }
+            tempos = new List<Cronometro>();
         }
     }
 }
